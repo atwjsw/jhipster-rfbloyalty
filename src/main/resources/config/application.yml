@@ -110,4 +110,8 @@ jhipster:
 # https://www.jhipster.tech/common-application-properties/
 # ===================================================================
 
-# application:
+application:
+logging:
+    level:
+        org.atwjsw.service: debug
+        org.atwjsw.aop.logging: error
