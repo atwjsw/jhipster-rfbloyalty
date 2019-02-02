@@ -3,6 +3,7 @@ package org.atwjsw.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.cloud.cloudfoundry.com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -31,7 +32,8 @@ public class RfbEventAttendance implements Serializable {
     @JsonIgnoreProperties("rfbEventAttendances")
     private RfbEvent rfbEvent;
 
-    @OneToOne    @JoinColumn(unique = true)
+    @ManyToOne
+    @JsonIgnoreProperties("rfbEventAttendances")
     private RfbUser rfbUser;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

@@ -44,18 +44,9 @@ export class RfbEventAttendanceUpdateComponent implements OnInit {
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
-        this.rfbUserService.query({ filter: 'rfbeventattendance-is-null' }).subscribe(
+        this.rfbUserService.query().subscribe(
             (res: HttpResponse<IRfbUser[]>) => {
-                if (!this.rfbEventAttendance.rfbUserId) {
-                    this.rfbusers = res.body;
-                } else {
-                    this.rfbUserService.find(this.rfbEventAttendance.rfbUserId).subscribe(
-                        (subRes: HttpResponse<IRfbUser>) => {
-                            this.rfbusers = [subRes.body].concat(res.body);
-                        },
-                        (subRes: HttpErrorResponse) => this.onError(subRes.message)
-                    );
-                }
+                this.rfbusers = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
